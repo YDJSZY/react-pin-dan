@@ -18,6 +18,27 @@ export default class Nav extends React.Component {
     }
 
     componentDidMount() {
+        if(location.hash.indexOf("myCombinedOrders")!==-1){
+            var myAllOrdersLink = document.getElementById("myAllOrders");
+            var cls = myAllOrdersLink.getAttribute("class") || "";
+            if(cls.indexOf("active") === -1) {
+                cls+=" active";
+                myAllOrdersLink.setAttribute("class",cls);
+            }
+        }
+    }
+
+    componentDidUpdate() {
+        var myAllOrdersLink = document.getElementById("myAllOrders");
+        if(location.hash.indexOf("myCombinedOrders")!==-1){
+            var cls = myAllOrdersLink.getAttribute("class") || "";
+            if(cls.indexOf("active") === -1) {
+                cls+=" active";
+                myAllOrdersLink.setAttribute("class",cls);
+            }
+        }else{
+            myAllOrdersLink.setAttribute("class","");
+        }
     }
 
     render() {
@@ -25,13 +46,13 @@ export default class Nav extends React.Component {
             <div className={styles.main_link}>
                 <ul>
                     <li>
-                        <NavLink to="/home/" activeClassName={styles.active}>首页</NavLink>
+                        <NavLink to="/home/" activeClassName='active'>首页</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/preferential/" activeClassName={styles.active}>优惠速递</NavLink>
+                        <NavLink to="/preferential/" activeClassName='active'>优惠速递</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/myCombinedOrders/" activeClassName={styles.active}>我的拼单</NavLink>
+                        <NavLink to="/myCombinedOrders/all/" id="myAllOrders" activeClassName='active'>我的拼单</NavLink>
                     </li>
                 </ul>
             </div>

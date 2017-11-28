@@ -95,13 +95,11 @@ const Home = (match) => (
     </Bundle>
 )
 const MyCombinedOrders = (match) => {
-    console.log(match)
     return <Bundle load={allOrders}>
         {
             () =>{
                 return <div>
                     {childMenu()}
-                    {match.match.path === '/myCombinedOrders/' ? getChildPage('all') : null}
                     <Route path={`/myCombinedOrders/:target`} render={(match)=>{return getChildPage(match)}}/>
                 </div>
             }
@@ -114,7 +112,7 @@ export default class RouteComponent extends React.Component {
         return <Switch>
             <Route exact path="/" render={()=>{return <Redirect to={"/home/"} />}}></Route>
             <Route path="/home/" render={(match)=>{return Home(match)}}></Route>
-            <Route path="/myCombinedOrders/" render={(match)=>{return MyCombinedOrders(match)}}></Route>
+            <Route path="/myCombinedOrders/" strict render={(match)=>{return MyCombinedOrders(match)}}></Route>
         </Switch>
 
     }

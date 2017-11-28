@@ -19,7 +19,7 @@ function childMenu () {
 }
 
 function getChildPage(target) {
-    if(target === "all") return <AllOrders />
+    if(!target.match.params.target) return <AllOrders />
     if(target.match.params.target === "all") return <AllOrders />
     if(target.match.params.target === "finished") return <FinishedOrders />
     if(target.match.params.target === "unfinished") return <UnfinishedOrders />

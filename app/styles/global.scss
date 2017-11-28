@@ -22,5 +22,12 @@ body{
 :global{
     .link{
         color:green;
+    },
+
+    .active{
+        color: #333333;
+        border-bottom: 2px solid #FF9600;
+        padding-bottom: 10px;
     }
+
 }

@@ -23,10 +23,13 @@
     display: inline-block;
 }
 
-.nav .main_link ul li a.active{
-    color: #333333;
-    border-bottom: 2px solid #FF9600;
-    padding-bottom: 10px;
+:global{
+    .active{
+        color: #333333;
+        border-bottom: 2px solid #FF9600;
+        padding-bottom: 10px;
+    }
 }
+
 
 .nav .main_link ul.child_menu{}
