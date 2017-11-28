@@ -1,0 +1,20 @@
+.my_combined_orders{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content:space-between;
+    padding: 0 14px;
+}
+
+.my_combined_orders li a{
+    color: #999999;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 12px 0;
+    display: inline-block;
+}
+
+.my_combined_orders .active{
+    color: #FF9600;
+}
