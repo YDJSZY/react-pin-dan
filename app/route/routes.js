@@ -89,23 +89,45 @@ import { childMenu,getChildPage } from '../pages/myCombinedOrders/childMenu';
 const $localStorage = getLocalStorage();
 const currentRoute = $localStorage.route;
 const exactRoute = currentRoute || "page_a";
+
 const Home = (match) => (
     <Bundle load={home}>
         {(Home) => <Home match={match}/>}
     </Bundle>
 )
+
 const MyCombinedOrders = (match) => {
-    return <Bundle load={allOrders}>
-        {
-            () =>{
-                return <div>
-                    {childMenu()}
-                    <Route path={`/myCombinedOrders/:target`} render={(match)=>{return getChildPage(match)}}/>
-                </div>
-            }
-        }
-    </Bundle>
+    return <div>
+        {childMenu()}
+        <Route exact path="/myCombinedOrders/" render={()=>{return <Redirect to={"/myCombinedOrders/all/"} />}}></Route>
+        <Route path={`/myCombinedOrders/:target?`} render={(match)=>{return getChildPage(match)}}/>
+    </div>
 }
+/*const routes = [
+    {
+        path: '/',
+        render: Home
+    },
+    {
+        path: '/myCombinedOrders/',
+        render: MyCombinedOrders,
+        routes: [
+            {
+                path: '/myCombinedOrders/all/',
+                render: Bus
+            },
+            {
+                path: '/myCombinedOrders/finished/',
+                render: Cart
+            },
+            {
+                path: '/myCombinedOrders/unfinished/',
+                render: Cart
+            }
+        ]
+    }
+]*/
+
 
 export default class RouteComponent extends React.Component {
     render() {
