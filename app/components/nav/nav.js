@@ -18,27 +18,11 @@ export default class Nav extends React.Component {
     }
 
     componentDidMount() {
-        if(location.hash.indexOf("myCombinedOrders")!==-1){
-            var myAllOrdersLink = document.getElementById("myAllOrders");
-            var cls = myAllOrdersLink.getAttribute("class") || "";
-            if(cls.indexOf("active") === -1) {
-                cls+=" active";
-                myAllOrdersLink.setAttribute("class",cls);
-            }
-        }
+
     }
 
     componentDidUpdate() {
-        var myAllOrdersLink = document.getElementById("myAllOrders");
-        if(location.hash.indexOf("myCombinedOrders")!==-1){
-            var cls = myAllOrdersLink.getAttribute("class") || "";
-            if(cls.indexOf("active") === -1) {
-                cls+=" active";
-                myAllOrdersLink.setAttribute("class",cls);
-            }
-        }else{
-            myAllOrdersLink.setAttribute("class","");
-        }
+
     }
 
     render() {
@@ -52,7 +36,7 @@ export default class Nav extends React.Component {
                         <NavLink to="/preferential/" activeClassName='active'>优惠速递</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/myCombinedOrders/all/" id="myAllOrders" activeClassName='active'>我的拼单</NavLink>
+                        <NavLink to="/myCombinedOrders/" id="myAllOrders" activeClassName='active'>我的拼单</NavLink>
                     </li>
                 </ul>
             </div>
