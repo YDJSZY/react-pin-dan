@@ -1,7 +1,6 @@
 /**
  * Created by luwenwei on 17/8/29.
  */
-//import MyMenu from './components/nav';
 import HeaderComponent from './components/header/header';
 import RouteComponent from './route/routes';
 import React from "react";

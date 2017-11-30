@@ -85,7 +85,10 @@ import Bundle from './bundle.js';
 import home from 'bundle-loader?lazy&name=[name]!../pages/home/home.js';
 import allOrders from 'bundle-loader?lazy&name=[name]!../pages/myCombinedOrders/all.js';
 import { getLocalStorage } from '../untils/global';
-import { childMenu,getChildPage } from '../pages/myCombinedOrders/childMenu';
+import { childMenu } from '../pages/myCombinedOrders/childMenu';
+import finishedOrders from 'bundle-loader?lazy&name=[name]!../pages/myCombinedOrders/finished.js';
+import unfinishedOrders from 'bundle-loader?lazy&name=[name]!../pages/myCombinedOrders/unfinished.js';
+import MyOrders from '../pages/myCombinedOrders/index';
 const $localStorage = getLocalStorage();
 const currentRoute = $localStorage.route;
 const exactRoute = currentRoute || "page_a";
@@ -96,16 +99,35 @@ const Home = (match) => (
     </Bundle>
 )
 
-const MyCombinedOrders = (match) => {
-    return <div>
-        {childMenu()}
-        <Route exact path="/myCombinedOrders/" render={()=>{return <Redirect to={"/myCombinedOrders/all/"} />}}></Route>
-        <Route path={`/myCombinedOrders/:target?`} render={(match)=>{return getChildPage(match)}}/>
-    </div>
+const AllOrders = (match) => (
+    <Bundle load={allOrders}>
+        {(AllOrders) => <AllOrders match={match}/>}
+    </Bundle>
+)
+
+const FinishedOrders = (match) => (
+    <Bundle load={finishedOrders}>
+        {(FinishedOrders) => <FinishedOrders match={match}/>}
+    </Bundle>
+)
+
+const UnfinishedOrders = (match) => (
+    <Bundle load={unfinishedOrders}>
+        {(UnfinishedOrders) => <UnfinishedOrders match={match}/>}
+    </Bundle>
+)
+const MyCombinedOrders = (match,routes) => {
+    return <MyOrders match={match} childRoutes={routes} />
 }
-/*const routes = [
+const routes = [
     {
+        exact:true,
+        redirect:'home',
         path: '/',
+        render: Home
+    },
+    {
+        path: '/home/',
         render: Home
     },
     {
@@ -113,28 +135,38 @@ const MyCombinedOrders = (match) => {
         render: MyCombinedOrders,
         routes: [
             {
+                exact:true,
+                redirect:'myCombinedOrders/all',
+                path: '/myCombinedOrders/',
+                render: Home
+            },
+            {
                 path: '/myCombinedOrders/all/',
-                render: Bus
+                render: AllOrders
             },
             {
                 path: '/myCombinedOrders/finished/',
-                render: Cart
+                render: FinishedOrders
             },
             {
                 path: '/myCombinedOrders/unfinished/',
-                render: Cart
+                render: UnfinishedOrders
             }
         ]
     }
-]*/
+]
 
+var createRoute = function (routes) {
+    return routes.map((route,i)=>{
+        if(route.exact) return <Route key={'route_'+i} exact path={route.path} render={()=>{return <Redirect to={"/"+route.redirect+"/"} />}}></Route>
+        return <Route key={'route_'+i} path={route.path} render={(match)=>{ return route.render(match,route.routes)}}></Route>
+    })
+}
 
 export default class RouteComponent extends React.Component {
     render() {
         return <Switch>
-            <Route exact path="/" render={()=>{return <Redirect to={"/home/"} />}}></Route>
-            <Route path="/home/" render={(match)=>{return Home(match)}}></Route>
-            <Route path="/myCombinedOrders/" strict render={(match)=>{return MyCombinedOrders(match)}}></Route>
+            {createRoute(routes)}
         </Switch>
 
     }
