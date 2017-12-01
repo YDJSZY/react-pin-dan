@@ -18,7 +18,6 @@ export default class Nav extends React.Component {
     }
 
     componentDidMount() {
-
     }
 
     componentDidUpdate() {
@@ -36,7 +35,7 @@ export default class Nav extends React.Component {
                         <NavLink to="/preferential/" activeClassName='active'>优惠速递</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/myCombinedOrders/" id="myAllOrders" activeClassName='active'>我的拼单</NavLink>
+                        <NavLink to="/myCombinedOrders/" activeClassName='active'>我的拼单</NavLink>
                     </li>
                 </ul>
             </div>

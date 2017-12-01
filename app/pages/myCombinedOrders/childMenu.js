@@ -1,9 +1,7 @@
 import React from "react";
 import  { NavLink } from 'react-router-dom';
 import myCombinedOrdersStyles from './style.scss';
-import AllOrders from './all';
-import FinishedOrders from './finished';
-import UnfinishedOrders from './unfinished';
+
 function childMenu () {
     return <ul className={myCombinedOrdersStyles.my_combined_orders}>
         <li>
@@ -18,11 +16,4 @@ function childMenu () {
     </ul>
 }
 
-function getChildPage(target) {
-    if(!target.match.params.target) return <AllOrders />
-    if(target.match.params.target === "all") return <AllOrders />
-    if(target.match.params.target === "finished") return <FinishedOrders />
-    if(target.match.params.target === "unfinished") return <UnfinishedOrders />
-}
-
-export { childMenu,getChildPage}
+export { childMenu }

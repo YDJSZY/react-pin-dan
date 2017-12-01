@@ -4,6 +4,7 @@
 import  { BrowserRouter as Router, Switch, Route,Redirect } from 'react-router-dom';
 import React from 'react';
 import { childMenu } from './childMenu';
+import { createRoute } from '../../untils/commonMethods'
 import Bundle from '../../route/bundle.js';
 
 export default class MyOrders extends React.Component{
@@ -16,10 +17,7 @@ export default class MyOrders extends React.Component{
         return <div>
             {childMenu()}
             {
-                routes.map((route,i)=>{
-                    if(route.exact) return <Route key={'route_'+i} exact path={route.path} render={()=>{return <Redirect to={"/"+route.redirect+"/"} />}}></Route>
-                    return <Route key={'route_'+i} path={route.path} render={(match)=>{ return route.render(match,route.routes)}}></Route>
-                })
+                createRoute(routes)
             }
         </div>
     }

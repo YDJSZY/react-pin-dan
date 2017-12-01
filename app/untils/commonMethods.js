@@ -1,6 +1,8 @@
 /**
  * Created by luwenwe on 2017/10/11.
  */
+import React from  'react';
+import  { BrowserRouter as Router, Route,Redirect } from 'react-router-dom';
 import { constants } from './global';
 var loading;
 var getConstantArrayValue = function(group, value) {
@@ -88,4 +90,11 @@ var findObjectIndexById = function (objectList, id) {
     return null;
 }
 
-export { getConstantArrayValue,getConstantObjectValue,showLoading,hideLoading,translateSelectSource,findObjectById,findObjectIndexById }
+var createRoute = function (routes) {
+    return routes.map((route,i)=>{
+        if(route.exact) return <Route key={'route_'+i} exact={route.exact ? route.exact : true} path={route.path} render={()=>{return <Redirect to={"/"+route.redirect+"/"} />}}></Route>
+        return <Route key={'route_'+i} path={route.path} render={(match)=>{ return route.render(match,route.routes)}}></Route>
+    })
+}
+
+export { getConstantArrayValue,getConstantObjectValue,createRoute,showLoading,hideLoading,translateSelectSource,findObjectById,findObjectIndexById }

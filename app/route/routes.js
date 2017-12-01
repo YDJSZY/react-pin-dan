@@ -89,6 +89,7 @@ import { childMenu } from '../pages/myCombinedOrders/childMenu';
 import finishedOrders from 'bundle-loader?lazy&name=[name]!../pages/myCombinedOrders/finished.js';
 import unfinishedOrders from 'bundle-loader?lazy&name=[name]!../pages/myCombinedOrders/unfinished.js';
 import MyOrders from '../pages/myCombinedOrders/index';
+import { createRoute } from '../untils/commonMethods'
 const $localStorage = getLocalStorage();
 const currentRoute = $localStorage.route;
 const exactRoute = currentRoute || "page_a";
@@ -137,12 +138,12 @@ const routes = [
             {
                 exact:true,
                 redirect:'myCombinedOrders/all',
-                path: '/myCombinedOrders/',
-                render: Home
+                path: '/myCombinedOrders/'
             },
             {
                 path: '/myCombinedOrders/all/',
-                render: AllOrders
+                render: AllOrders,
+                routes:[]
             },
             {
                 path: '/myCombinedOrders/finished/',
@@ -155,13 +156,6 @@ const routes = [
         ]
     }
 ]
-
-var createRoute = function (routes) {
-    return routes.map((route,i)=>{
-        if(route.exact) return <Route key={'route_'+i} exact path={route.path} render={()=>{return <Redirect to={"/"+route.redirect+"/"} />}}></Route>
-        return <Route key={'route_'+i} path={route.path} render={(match)=>{ return route.render(match,route.routes)}}></Route>
-    })
-}
 
 export default class RouteComponent extends React.Component {
     render() {
