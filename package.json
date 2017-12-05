@@ -52,7 +52,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "antd": "^2.12.8",
+    "antd-mobile": "^2.1.0",
     "autoprefixer": "^7.1.6",
     "axios": "^0.16.2",
     "bootstrap": "^3.3.7",
