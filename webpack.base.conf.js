@@ -28,13 +28,13 @@ var config = {
                 loader: 'babel-loader',
                 query: {
                     cacheDirectory: true,
-                    plugins: ['transform-runtime',['import', [{ libraryName: 'antd', style: "css" }]]],
+                    plugins: ['transform-runtime',['import', [{ libraryName: 'antd-mobile', style: "css" }]]],
                     presets:['es2015','react','stage-0']
                 }
             },
             {
                 test: /\.css$/,
-                exclude: [path.join(__dirname,'./node_modules/antd'),path.join(__dirname,'./app/styles')],
+                exclude: [path.join(__dirname,'./node_modules/antd-mobile'),path.join(__dirname,'./app/styles')],
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: "css-loader!postcss-loader"
@@ -43,7 +43,7 @@ var config = {
             {
                 test: /\.css$/,
                 include:[
-                    path.join(__dirname,'./node_modules/antd'),
+                    path.join(__dirname,'./node_modules/antd-mobile'),
                     path.join(__dirname,'./app/styles'),
                 ],
                 loader : 'style-loader!css-loader!postcss-loader',// 一定要有style-loader

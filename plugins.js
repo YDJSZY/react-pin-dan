@@ -3,8 +3,7 @@
  */
 var plugins = {
     "css":[
-        "./node_modules/font-awesome/css/font-awesome.min.css",
-        './node_modules/antd/lib/date-picker/style/index.css',
+        "./node_modules/font-awesome/css/font-awesome.min.css"
     ],
     "js":[
         "./node_modules/whatwg-fetch/fetch.js",

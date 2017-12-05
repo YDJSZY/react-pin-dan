@@ -37,6 +37,9 @@ export default class Nav extends React.Component {
                     <li>
                         <NavLink to="/myCombinedOrders/" activeClassName='active'>我的拼单</NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/createCombinedOrders/" activeClassName='active'>创建拼单</NavLink>
+                    </li>
                 </ul>
             </div>
         </div>

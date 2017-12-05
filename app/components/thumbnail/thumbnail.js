@@ -15,7 +15,7 @@ export default class ThumbnailComponent extends React.Component {
     
     render() {
         let data = this.data;
-        return data ? <div className={styles.thumbnail} style={data.style}>
+        return data ? <div className={styles.thumbnail} style={this.props.style}>
             <div className={styles.thumbnail_img}>
                 <img src={this.data.img_url} />
             </div>

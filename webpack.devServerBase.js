@@ -25,7 +25,7 @@ var config = {
                 loader: 'babel-loader',
                 query: {
                     cacheDirectory: true,
-                    plugins: ['transform-runtime',['import', [{ libraryName: 'antd', style: "css" }]]],
+                    plugins: ['transform-runtime',['import', [{ libraryName: 'antd-mobile', style: "css" }]]],
                     presets:['es2015','react','stage-0']
                 }
             },

@@ -8,7 +8,7 @@ import { HashRouter } from 'react-router-dom';
 import axios from './config/axiosConfig';
 import App from './app';
 import {myInfo,constants,setMyInfo,setConstants} from './untils/global'
-require("./styles/someReset.css");
+import "./styles/someReset.css";
 async function getMyInfo() {
     var response = await axios.get('../package.json');
     setMyInfo(response.data);
