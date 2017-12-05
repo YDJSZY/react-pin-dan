@@ -4,8 +4,6 @@
 var webpack = require('webpack');
 var path = require('path');
 var plugins = require("./plugins");
-//var autoprefixer = require('autoprefixer');
-//var postcss-loader = require('postcss-loader');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var QueueAnim = path.resolve(__dirname,'./node_modules/rc-queue-anim/lib/index.js')
@@ -34,19 +32,19 @@ var config = {
             },
             {
                 test: /\.css$/,
-                exclude: [path.join(__dirname,'./node_modules/antd-mobile'),path.join(__dirname,'./app/styles')],
+                exclude: [path.join(__dirname,'./app/styles')],
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: "css-loader!postcss-loader"
+                    use: "css-loader"
                 })
             },
             {
-                test: /\.css$/,
-                include:[
-                    path.join(__dirname,'./node_modules/antd-mobile'),
-                    path.join(__dirname,'./app/styles'),
+                test: /\.(css|sass|scss)$/,
+                exclude:[
+                    path.join(__dirname,'./node_modules/'),
+                    //path.join(__dirname,'./app/styles'),
                 ],
-                loader : 'style-loader!css-loader!postcss-loader',// 一定要有style-loader
+                loader : 'style-loader!css-loader?modules&localIdentName=[name]__[local]-[hash:base64:5]!sass-loader?sourceMap!postcss-loader',// 一定要有style-loader
             },
             { test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=50000&name=font/[name].[ext]'}
         ]

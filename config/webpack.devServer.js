@@ -3,6 +3,7 @@
  */
 var webpack = require('webpack');
 var ip = require('ip');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
 var config = {
     output:{
@@ -24,8 +25,8 @@ var config = {
             'process.env.NODE.ENV':"development"
         }),*/
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({names: ['jquery','react','vendor', 'manifest']}),
-        //new ExtractTextPlugin('styles.css')
+        new webpack.optimize.CommonsChunkPlugin({names: ['react','vendor', 'manifest']}),
+        new ExtractTextPlugin('styles.css')
     ]
 };
 

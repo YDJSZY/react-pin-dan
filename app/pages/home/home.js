@@ -22,6 +22,7 @@ export default class Home extends React.Component{
                 orderData:[
                     {
                         img_url:'../../images/order1.png',
+                        like:1200,
                         price:'满199减100/满399减200',
                         order_address:'京东 | 15:30',
                         status:1,
@@ -30,6 +31,25 @@ export default class Home extends React.Component{
                     },
                     {
                         img_url:'../../images/order1.png',
+                        like:1200,
+                        price:'满299减100/满399减200',
+                        order_address:'淘宝 | 15:30',
+                        status:1,
+                        people_count:23,
+                        order_description:'这是恨便宜的拼单,欢迎来购买.本店特价不要998只要89,真的只要这个价'
+                    },
+                    {
+                        img_url:'../../images/order1.png',
+                        like:1200,
+                        price:'满299减100/满399减200',
+                        order_address:'淘宝 | 15:30',
+                        status:1,
+                        people_count:23,
+                        order_description:'这是恨便宜的拼单,欢迎来购买.本店特价不要998只要89,真的只要这个价'
+                    },
+                    {
+                        img_url:'../../images/order1.png',
+                        like:1200,
                         price:'满299减100/满399减200',
                         order_address:'淘宝 | 15:30',
                         status:1,

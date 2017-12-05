@@ -6,6 +6,7 @@ import RouteComponent from './route/routes';
 import React from "react";
 import globalStyles from './styles/global.scss';
 import 'lib-flexible';
+//require('../node_modules/font-awesome/css/font-awesome.min.css');
 export default class App extends React.Component {
     constructor(props){
         super(props)

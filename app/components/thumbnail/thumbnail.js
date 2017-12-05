@@ -16,6 +16,10 @@ export default class ThumbnailComponent extends React.Component {
     render() {
         let data = this.data;
         return data ? <div className={styles.thumbnail} style={this.props.style}>
+            <div className={styles.like}>
+                <i className="fa fa-star" style={{color:'#FB674C'}}></i>
+                <span style={{color:'#FFFFFF','marginLeft':'5px',fontSize:'10px'}}>{data.like}</span>
+            </div>
             <div className={styles.thumbnail_img}>
                 <img src={this.data.img_url} />
             </div>

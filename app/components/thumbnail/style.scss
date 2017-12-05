@@ -3,6 +3,21 @@
     padding: 0;
     display: flex;
     background: #ffffff;
+    position: relative;
+}
+
+.thumbnail .like{
+    position: absolute;
+    left: 0;
+    top:10px;
+    text-align: center;
+    min-width: 53px;
+    height:18px;
+    background: #4A4A4A;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 12px;
+    line-height: 18px;
 }
 
 .thumbnail .thumbnail_img{
